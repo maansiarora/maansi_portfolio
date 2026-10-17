@@ -1,6 +1,7 @@
 import deploymentArchitecture from "../assets/architecture_diagram.png";
 import marketplaceArchitecture from "../assets/marketplace-diagram.png";
 import cicdMigrationArchitecture from "../assets/cicd-migration.png";
+import automatedUpgradesArchitecture from "../assets/automated-upgrades.png";
 
 type CaseStudyContent = {
   duration?: string;
@@ -391,38 +392,131 @@ Another key takeaway was that successful GitOps adoption requires alignment with
   ],
 },
   "upgrade-automation": {
-    architecturePrompt: "Add a public-safe diagram of the Quarterback upgrade workflow, showing confirmed automation steps and components.",
-    sections: [
-      {
-        id: "challenge",
-        title: "The Challenge",
-        prompt: "Describe the manual upgrade effort and the challenges of keeping Quarterback within the supported version range.",
-      },
-      {
-        id: "role",
-        title: "My Role",
-        prompt: "Outline your responsibilities in designing and implementing the upgrade automation.",
-      },
-      {
-        id: "decisions",
-        title: "Key Decisions",
-        prompt: "Explain which upgrade steps were automated and the decisions and trade-offs behind the workflow.",
-      },
-      {
-        id: "technical-highlights",
-        title: "Technical Highlights",
-        prompt: "Describe the Backstage and GitLab CI automation details approved for public use.",
-      },
-      {
-        id: "impact",
-        title: "Impact",
-        prompt: "Add verified outcomes for manual effort, upgrade timelines and version support, with approved metrics where available.",
-      },
-      {
-        id: "lessons",
-        title: "Lessons Learned",
-        prompt: "Reflect on automating upgrades, the challenges encountered and what you would improve.",
-      },
-    ],
+  architectureImage: {
+    src: automatedUpgradesArchitecture,
+    alt: "Stage-driven GitLab CI workflow for Backstage upgrades, covering readiness checks, migration baselines, dependency updates, validation, sandbox deployment, post-upgrade checks and controlled production release.",
   },
+
+  sections: [
+    {
+      id: "challenge",
+      title: "The Challenge",
+      content: `
+Quarterback, our internal developer portal built on Backstage, required frequent upgrades to remain within the supported Backstage version range (targeting n-2 compliance).
+
+The upgrade process was highly manual and depended heavily on team knowledge. Engineers were required to review release notes, validate tooling and package repositories, capture plugin database migration states, update dependencies, refresh lockfiles, run validation builds and tests, deploy to sandbox environments and perform extensive post-upgrade verification activities.
+
+A typical upgrade required approximately a week's worth of manual effort and generated limited operational evidence or repeatability. In addition, shared GitLab runners operated without internet access, preventing the use of standard upstream upgrade tooling and creating additional complexity around dependency management.
+
+The challenge was to create a repeatable, auditable and largely automated upgrade process that reduced engineering effort while maintaining confidence, control and platform stability.
+      `,
+    },
+
+    {
+      id: "role",
+      title: "My Role",
+      content: `
+I was involved throughout the lifecycle of the upgrade automation initiative, including evaluation, design, implementation, validation and rollout.
+
+My contributions included:
+
+• Analysing the existing manual upgrade process and identifying automation opportunities.
+
+• Breaking the upgrade workflow into discrete, repeatable automation stages.
+
+• Designing and implementing the stage-driven GitLab CI upgrade pipeline.
+
+• Defining upgrade inputs, validation criteria and execution controls.
+
+• Supporting validation, rollout activities and operational adoption.
+
+• Producing documentation, troubleshooting guidance and supporting runbooks to ensure upgrades could be executed consistently by the wider team.
+
+The project required balancing automation with operational safety and ensuring critical validation points remained visible throughout the workflow.
+      `,
+    },
+
+    {
+      id: "decisions",
+      title: "Key Decisions",
+      content: `
+Several architectural and operational decisions shaped the solution.
+
+Rather than introducing internet access to the build environment, an internal version manifest was adopted to provide approved Backstage versions. This maintained security controls while still enabling predictable version upgrades. The trade-off was that each new supported version needed to be added to the manifest before use.
+
+Preparation, validation and evidence collection activities were automated, while remediation of breaking changes remained a manual activity. Upgrade failures vary significantly between releases, and human judgement is often required when API changes or plugin incompatibilities occur. The pipeline therefore focused on surfacing failures quickly and providing actionable diagnostics.
+
+A stage-driven pipeline model was adopted instead of a single end-to-end workflow. Engineers can independently execute pre-upgrade checks, sandbox deployment and post-upgrade validation, providing natural review points and improving confidence during execution.
+
+Flexible version-selection logic was introduced to support both standard n-2 upgrades and targeted version upgrades when required.
+
+Production deployment remains behind an approval gate and follows the existing release process, ensuring automation complements governance requirements rather than bypassing them.
+      `,
+    },
+
+    {
+      id: "technical-highlights",
+      title: "Technical Highlights",
+      content: `
+The solution was implemented as a GitLab CI driven automation framework supporting repeatable Backstage upgrades.
+
+Key technical capabilities included:
+
+• Stage-based GitLab CI workflow design
+
+• Internal version manifest supporting offline dependency resolution
+
+• Nexus package proxy integration for dependency acquisition
+
+• Plugin database migration baseline capture using Knex migration status reporting
+
+• Validation workflows covering type checking, builds and automated test execution
+
+• Sandbox deployment verification using Kubernetes and Helm deployment checks
+
+• Parameter-driven execution supporting version selection, environment targeting and release workflow options
+      `,
+    },
+
+    {
+      id: "impact",
+      title: "Impact",
+      content: `
+The automation significantly reduced the manual effort involved in maintaining Backstage version support while improving repeatability and operational visibility.
+
+Outcomes included:
+
+• Reduced estimated upgrade effort per upgrade cycle
+
+• Simplified maintenance of supported Backstage version requirements through repeatable automation
+
+• Improved consistency by establishing a single standard upgrade workflow
+
+• Increased auditability through automated evidence collection and artifact generation
+
+• Reduced dependency on individual engineer knowledge and manual runbook execution
+
+• Improved upgrade confidence through automated validation and sandbox verification stages
+
+• Created a scalable foundation for future enhancements including rollback automation, security scanning and operational reporting
+
+The initiative helped transform platform upgrades from a largely manual operational activity into a repeatable engineering process.
+      `,
+    },
+
+    {
+      id: "lessons",
+      title: "Lessons Learned",
+      content: `
+One of the most important lessons from this project was that automation should focus on eliminating repetitive effort while preserving opportunities for human judgement when needed.
+
+The restricted execution environment initially appeared to be a limitation, but ultimately resulted in a more controlled and reproducible approach through version manifests and internal dependency management.
+
+The project also reinforced that successful automation is often about orchestration rather than full autonomy. Separating upgrades into readiness, deployment and validation stages provided visibility, control and trust throughout the process.
+
+Another key lesson was the value of evidence generation. Automated migration baselines, validation outputs and deployment artifacts proved just as valuable as the automation itself when troubleshooting or reviewing upgrade outcomes.
+      `,
+    },
+  ],
+},
 };

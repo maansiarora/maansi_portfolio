@@ -79,7 +79,15 @@ function App() {
       </main>
       <footer className="container footer">
         <a className="wordmark" href="#home">maansi<span>.</span></a>
-        <a href="#home">Back to top </a>
+        <a
+          href={caseStudySlug !== null ? "#main" : "#home"}
+          onClick={caseStudySlug !== null ? (event) => {
+            event.preventDefault();
+            mainRef.current?.scrollIntoView({ behavior: "smooth" });
+          } : undefined}
+        >
+          Back to top
+        </a>
       </footer>
     </>
   );

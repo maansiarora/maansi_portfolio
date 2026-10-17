@@ -6,7 +6,7 @@ function CaseStudySections({ slug }: { slug: string }) {
   return (
     <div className="case-study-sections">
       <section className="case-study-section" aria-labelledby="architecture-title">
-        <h2 id="architecture-title">Architecture Diagram</h2>
+        <h2 id="architecture-title">Framework</h2>
         {content.architectureContent && (
           <div className="case-study-content">{content.architectureContent.trim()}</div>
         )}
