@@ -5,7 +5,7 @@ export default function About() {
         <div>
           <p className="eyebrow">01 / A little about me</p>
           <h2 id="about-title">An engineer's mind.<br /><em>A human-first approach.</em></h2>
-          <div className="location-note"><span className="status-dot" /> Based in Melbourne, Australia</div>
+          {/* <div className="location-note"><span className="status-dot" /> Based in Melbourne, Australia</div> */}
         </div>
         <div className="about-copy">
           <p className="lead">
@@ -24,7 +24,6 @@ export default function About() {
             marketplace, CI/CD modernisation and platform reliability initiatives
             used by engineering teams across the organisation.
           </p>
-          <div className="about-signoff">Good engineering should make someone's day a little easier.</div>
         </div>
       </div>
     </section>
