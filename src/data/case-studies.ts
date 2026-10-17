@@ -141,6 +141,8 @@ If approaching the project again, I would invest even earlier in platform onboar
   ],
 },
   "developer-marketplace": {
+  duration: "Feb 2026 - Oct 2026",
+
   architectureImage: {
     src: marketplaceArchitecture,
     alt: "Developer marketplace architecture showing its users, identity and access services, marketplace experience, Backstage portal core, decoupled services and integrated tools.",
@@ -276,6 +278,8 @@ Another key takeaway was the long-term value of investing in reusable design and
   ],
 },
   "ci-cd-modernisation": {
+  duration: "Oct 2024 - Feb 2025",
+
   architectureImage: {
     src: cicdMigrationArchitecture,
     alt: "CI/CD migration from Bamboo to GitLab CI and Flux CD, showing rootless image builds, quality and security scans, image promotion to AWS ECR, GitOps reconciliation and Helm deployments on EKS.",
@@ -392,6 +396,8 @@ Another key takeaway was that successful GitOps adoption requires alignment with
   ],
 },
   "upgrade-automation": {
+  duration: "Nov 2025 - Dec 2025",
+
   architectureImage: {
     src: automatedUpgradesArchitecture,
     alt: "Stage-driven GitLab CI workflow for Backstage upgrades, covering readiness checks, migration baselines, dependency updates, validation, sandbox deployment, post-upgrade checks and controlled production release.",

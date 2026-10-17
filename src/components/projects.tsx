@@ -45,7 +45,7 @@ export default function Projects() {
                 <p>{project.description}</p>
                 <ul className="tags" aria-label="Technologies">{project.tech.map((tech) => <li key={tech}>{tech}</li>)}</ul>
                 <span className="button button-primary project-cta" id={`${project.slug}-cta`}>
-                  View case study <span aria-hidden="true">↗</span>
+                  View case study
                 </span>
               </div>
             </a>
