@@ -30,23 +30,8 @@
 .hero-bottom { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-block: 25px; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
 .hero-bottom em { font-size: 13px; margin-left: 4px; }
 .hero-bottom a span { margin-left: 20px; }
-.hero-art { height: 470px; position: relative; margin-bottom: 54px; isolation: isolate; }
-.hero-art::before { content: ""; position: absolute; width: 340px; height: 340px; top: 65px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, #e6e8d9, transparent 70%); z-index: -1; }
-.art-orbit { position: absolute; border: 1px solid #e4e4d7; border-radius: 50%; width: 410px; height: 410px; left: 50%; top: 25px; transform: translateX(-50%); }
-.orbit-two { width: 320px; height: 320px; top: 70px; }
-.platform { position: absolute; width: 240px; height: 240px; left: calc(50% - 120px); border-radius: 39px; transform: rotate(-30deg) skewX(25deg) scaleY(.68); border: 1px solid #a4ae94; }
-.platform-bottom { top: 174px; background: #879976; box-shadow: -9px 15px 0 #6c805c, -12px 19px 0 #c1cbb3, -24px 42px 40px #4f5e3520; }
-.platform-middle { top: 109px; background: #e3e8d8e8; box-shadow: -7px 12px 0 #bfc9ad; }
-.platform-top { top: 43px; background: #f5f2e7f5; box-shadow: -6px 10px 0 #dedfcd; display: grid; place-items: center; }
-.platform-top span { font: italic 80px Georgia, serif; color: #778464; transform: skewX(-25deg) rotate(30deg); }
-.art-label { position: absolute; background: #fffdf6; border: 1px solid #e2e1d4; border-radius: 5px; padding: 12px 15px; box-shadow: 0 6px 18px #444b3010; font-size: 11px; display: flex; gap: 8px; align-items: center; }
-.art-label span { width: 6px; height: 6px; background: #8d9d7a; border-radius: 50%; }
-.label-top { top: 81px; right: -6px; }
-.label-bottom { bottom: 84px; left: 0; }
-.art-spark { position: absolute; color: #80916e; font-family: Georgia, serif; font-size: 36px; }
-.spark-one { left: 30px; top: 58px; }
-.spark-two { right: 30px; bottom: 80px; font-size: 28px; }
-.art-caption { position: absolute; bottom: 12px; width: 100%; text-align: center; font: italic 14px Georgia, serif; color: #787b67; }
+.hero-art { height: 470px; margin-bottom: 54px; }
+.hero-portrait { display: block; width: 100%; height: 100%; object-fit: contain; }
 h2 { font-family: Georgia, serif; font-size: clamp(32px, 3.2vw, 44px); line-height: 1.25; font-weight: 400; letter-spacing: -1.3px; }
 h2 em { color: var(--green); }
 .section .eyebrow { color: var(--green); margin-bottom: 20px; }
@@ -107,14 +92,17 @@ details .project-note { font-size: 11px; font-style: italic; }
 .skill-card h3 { margin-block: 22px 12px; font-size: 20px; }
 .skill-card p { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 290px; }
 .skill-card .tags li { border-color: #ced5c1; }
-.contact-panel { background: #eeeadf; border: 1px solid #e2dfd1; border-radius: 10px; padding: 60px; position: relative; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; }
+.contact-panel { background: #eeeadf; border: 1px solid #e2dfd1; border-radius: 10px; padding: 60px; position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 36px; align-items: center; }
 .contact-panel h2 { font-size: clamp(35px, 4vw, 51px); }
-.contact-panel p:not(.eyebrow, .contact-location) { font-size: 14px; line-height: 1.9; color: var(--muted); margin-top: 20px; }
-.contact-panel .button { margin-top: 28px; }
-.contact-seal { border: 1px solid #aab296; border-radius: 50%; width: 170px; height: 170px; display: flex; flex-direction: column; justify-content: center; align-items: center; transform: rotate(12deg); margin-right: 30px; color: #687655; outline: 1px solid #c5cbb8; outline-offset: 8px; }
-.contact-seal span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-.contact-seal strong { font: italic 70px Georgia, serif; line-height: 1.3; }
-.contact-location { display: flex; gap: 8px; align-items: center; font-size: 10px; color: var(--muted); grid-column: 1 / -1; margin-top: 12px; }
+.contact-description { max-width: 530px; margin-top: 20px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+.contact-email-label { margin-top: 22px; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; }
+.contact-email { display: block; width: fit-content; max-width: 100%; margin-top: 7px; color: var(--green); font-size: 15px; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.contact-social { display: grid; justify-items: center; text-align: center; }
+.contact-social h3 { color: var(--green); font-size: 14px; font-weight: 600; }
+.contact-social p { max-width: 200px; margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.contact-qr { margin: 14px 0 0; }
+.contact-qr img { display: block; width: 170px; max-width: 100%; aspect-ratio: 1; object-fit: contain; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+.contact-location { display: flex; gap: 8px; align-items: center; margin-top: 22px; color: var(--muted); font-size: 10px; }
 .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-block: 30px; gap: 20px; }
 .footer p, .footer > a:last-child { font-size: 11px; color: var(--muted); }
 .footer > a:last-child span { margin-left: 12px; }
@@ -127,12 +115,10 @@ details .project-note { font-size: 11px; font-style: italic; }
 @media (max-width: 1000px) {
   .container { width: calc(100% - 64px); }
   .hero { column-gap: 0; grid-template-columns: 1.2fr 1fr; padding-top: 65px; }
-  .hero-art { transform: scale(.8); transform-origin: center; margin-inline: -30px; }
   .hero h1 { font-size: 60px; }
   .hero-actions { gap: 18px; flex-wrap: wrap; }
   .about-grid { gap: 40px; }
   .section { padding-block: 80px; }
-  .contact-seal { margin-right: 0; width: 140px; height: 140px; }
   .contact-panel { padding: 40px; }
   .skills-grid { gap: 22px; }
 }
@@ -148,20 +134,14 @@ details .project-note { font-size: 11px; font-style: italic; }
   .nav-links a { padding: 12px; }
   .nav-contact { margin-top: 5px; }
   .hero { padding-top: 55px; grid-template-columns: 1fr; }
-  .hero-copy { padding-bottom: 0; }
-  .hero .eyebrow { font-size: 9px; letter-spacing: 1.2px; }
+  .hero-copy { padding-bottom: 28px; text-align: center; }
+  .hero .eyebrow { justify-content: center; font-size: 9px; letter-spacing: 1.2px; }
   .hero h1 { font-size: clamp(49px, 10.5vw, 70px); letter-spacing: -2.5px; margin-block: 23px; }
-  .hero-statement { font-size: 24px; max-width: 500px; }
-  .hero-description { font-size: 14px; max-width: 480px; }
-  .hero-actions { margin-top: 26px; gap: 22px; }
+  .hero-statement { font-size: 24px; max-width: 500px; margin-inline: auto; }
+  .hero-description { font-size: 14px; max-width: 480px; margin-inline: auto; }
+  .hero-actions { margin-top: 26px; gap: 22px; justify-content: center; }
   .button { padding: 14px 18px; gap: 20px; }
-  .hero-art { width: min(100%, 430px); justify-self: center; height: 405px; margin: 0; transform: scale(.88); }
-  .art-orbit { width: 360px; height: 360px; }
-  .orbit-two { width: 280px; height: 280px; }
-  .label-top { right: -5px; }
-  .label-bottom { left: -5px; bottom: 40px; }
-  .art-caption { bottom: -5px; }
-  .spark-two { bottom: 35px; }
+  .hero-art { display: none; }
   .hero-bottom { padding-block: 20px; }
   .hero-bottom > span { max-width: 180px; line-height: 1.8; }
   .hero-bottom em { margin: 0; display: block; }
@@ -179,8 +159,12 @@ details .project-note { font-size: 11px; font-style: italic; }
   .skills-grid { margin-top: 30px; }
   .skill-card h3 { margin-top: 15px; }
   .skill-card p { max-width: none; }
-  .contact-panel { padding: 32px 24px; grid-template-columns: 1fr; gap: 12px; }
-  .contact-seal { display: none; }
+  .contact-panel { padding: 32px 24px; grid-template-columns: 1fr; gap: 28px; }
+  .contact-copy { text-align: center; }
+  .contact-description { margin-inline: auto; }
+  .contact-email { margin-inline: auto; }
+  .contact-social { justify-self: center; }
+  .contact-qr img { width: 150px; }
   .contact-location { margin-top: 20px; }
   .desktop-break { display: none; }
   .footer { flex-wrap: wrap; padding-block: 25px; }

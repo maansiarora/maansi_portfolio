@@ -29,10 +29,10 @@ function App() {
           </button>
           <div id="navigation-links" className={`nav-links${menuOpen ? " is-open" : ""}`}>
             <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="#projects" onClick={() => setMenuOpen(false)}>Selected work</a>
+            <a href="#projects" onClick={() => setMenuOpen(false)}>Featured work</a>
             <a href="#skills" onClick={() => setMenuOpen(false)}>Expertise</a>
             <a className="nav-contact" href="#contact" onClick={() => setMenuOpen(false)}>
-              Let's connect <span aria-hidden="true">↗</span>
+              Let's connect
             </a>
           </div>
         </nav>
@@ -47,7 +47,7 @@ function App() {
       <footer className="container footer">
         <a className="wordmark" href="#home">maansi<span>.</span></a>
         <p>Thoughtful engineering. Meaningful experiences.</p>
-        <a href="#home">Back to top <span aria-hidden="true">↑</span></a>
+        <a href="#home">Back to top </a>
       </footer>
     </>
   );
