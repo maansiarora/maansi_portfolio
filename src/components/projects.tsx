@@ -1,64 +1,94 @@
+import { useState } from "react";
+
+const filters = ["All work", "Developer experience", "Platforms & cloud"] as const;
+type Filter = (typeof filters)[number];
+
 const projects = [
   {
     title: "Developer Marketplace",
-    tech: "React • TypeScript • Backstage",
-    description:
-      "Designed and developed a marketplace-style experience to improve discovery of internal engineering products and templates.",
+    category: "Developer experience",
+    description: "Making internal engineering products easier to discover, understand and use.",
+    detail: "A marketplace-style experience for internal engineering products and templates, bringing product discovery and self-service into one place.",
+    tech: ["React", "TypeScript", "Backstage"],
+    motif: "marketplace",
+    label: "Discover. Build. Create.",
   },
   {
-    title: "GitLab → Azure Deployment Zone",
-    tech: "GitLab CI • Azure • Automation",
-    description:
-      "Built deployment workflows connecting GitLab pipelines with Azure deployment zones.",
+    title: "Deployment Zone Expansion",
+    category: "Platforms & cloud",
+    description: "Connecting delivery pipelines with cloud deployment environments.",
+    detail: "Deployment workflows connecting GitLab pipelines with Azure deployment zones, supporting the expansion of engineering delivery platforms.",
+    tech: ["GitLab CI", "Azure", "Automation"],
+    motif: "deployment",
+    label: "From commit to cloud.",
   },
   {
-    title: "QB Upgrade Automation",
-    tech: "AWS • GitLab • Automation",
-    description:
-      "Reduced manual effort and improved consistency through upgrade automation workflows.",
+    title: "CI/CD Modernisation",
+    category: "Platforms & cloud",
+    description: "Helping engineering teams move towards a more modern delivery experience.",
+    detail: "Modernising delivery pipelines by migrating Bamboo workloads to GitLab, with a focus on maintainable workflows and the developer experience.",
+    tech: ["GitLab", "Bamboo", "CI/CD"],
+    motif: "pipeline",
+    label: "A clearer path to delivery.",
   },
   {
-    title: "CI/CD Migration",
-    tech: "GitLab • Bamboo • DevOps",
-    description:
-      "Modernized delivery pipelines by migrating Bamboo workloads to GitLab.",
+    title: "Upgrade Automation",
+    category: "Platforms & cloud",
+    description: "Turning repetitive platform tasks into consistent, automated workflows.",
+    detail: "Upgrade automation workflows focused on reducing manual effort and improving consistency across platform operations.",
+    tech: ["AWS", "GitLab", "Automation"],
+    motif: "automation",
+    label: "Less repetition. More possibility.",
   },
 ];
 
 export default function Projects() {
+  const [filter, setFilter] = useState<Filter>("All work");
+  const visibleProjects = projects.filter((project) => filter === "All work" || project.category === filter);
+
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-8 py-24">
-      <h2 className="mb-12 text-4xl font-bold">
-        Featured Projects
-      </h2>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        {projects.map((project) => (
-          <div
-            key={project.title}
-            className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6"
-          >
-            <div
-  key={project.title}
-  className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-cyan-400"
->
-  <h3 className="mb-2 text-2xl font-semibold">
-    {project.title}
-  </h3>
-
-  <p className="mb-4 text-sm text-cyan-400">
-    {project.tech}
-  </p>
-
-  <p className="text-zinc-400">
-    {project.description}
-  </p>
-</div>
-
-            <p className="text-zinc-400">
-              {project.description}
-            </p>
-          </div>
+    <section id="projects" className="container section" aria-labelledby="projects-title">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">02 / Selected work</p>
+          <h2 id="projects-title">Built to make <em>a difference.</em></h2>
+        </div>
+        <p>A selection of the platforms and experiences<br className="desktop-break" /> I've helped bring to life.</p>
+      </div>
+      <div className="project-filters" role="group" aria-label="Filter selected work">
+        {filters.map((item) => (
+          <button key={item} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)}>
+            {item}
+          </button>
+        ))}
+      </div>
+      <p className="sr-only" role="status">{visibleProjects.length} projects shown</p>
+      <div className="project-grid">
+        {visibleProjects.map((project) => (
+          <article className="project-card" key={project.title}>
+            <div className={`project-art ${project.motif}`} aria-hidden="true">
+              <div className="mini-window">
+                <div className="window-bar"><i /><i /><i /></div>
+                <div className="window-content">
+                  <span className="window-symbol">{project.motif === "marketplace" ? "m." : project.motif === "deployment" ? "↗" : project.motif === "pipeline" ? "→" : "✳"}</span>
+                  <div className="window-lines"><span /><span /><span /></div>
+                  <div className="window-tiles"><span /><span /><span /></div>
+                </div>
+              </div>
+              <span className="project-art-caption">{project.label}</span>
+            </div>
+            <div className="project-body">
+              <p className="eyebrow">{project.category}</p>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <ul className="tags" aria-label="Technologies">{project.tech.map((tech) => <li key={tech}>{tech}</li>)}</ul>
+              <details>
+                <summary>About this work <span className="details-icon" aria-hidden="true">+</span></summary>
+                <p>{project.detail}</p>
+                <p className="project-note">Internal work at Telstra. Source code is not public.</p>
+              </details>
+            </div>
+          </article>
         ))}
       </div>
     </section>

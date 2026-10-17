@@ -1,75 +1,38 @@
-# React + TypeScript + Vite
+# Maansi Arora's portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React + TypeScript portfolio with a sage, cream and warm brown palette. Built with Vite, with no external fonts or image services.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Checks
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm run lint
+npm run build
 ```
+
+Use `npm run preview` to preview the production build at `/maansi_portfolio/`.
+
+## GitHub Pages
+
+The Vite base path is configured for the `maansiarora/maansi_portfolio` repository.
+
+1. Push your source changes to GitHub.
+2. Run `npm run deploy`. The predeploy script builds the site before publishing the generated output to the `gh-pages` branch. Git authentication and repository write access are required.
+3. In the repository's **Settings → Pages**, select **Deploy from a branch**, the **gh-pages** branch, and **/ (root)**.
+4. The site will be available at <https://maansiarora.github.io/maansi_portfolio/>.
+
+If the repository name changes, update `base` in [vite.config.ts](./vite.config.ts) and `homepage` in [package.json](./package.json).
+
+## Content and interactions
+
+- Section components live in [src/components](./src/components).
+- [src/App.css](./src/App.css) contains layouts and illustrations; [src/index.css](./src/index.css) defines the shared palette and base styles.
+- Navigation supports mobile screens, keyboard focus and a skip link. Motion respects the visitor's reduced-motion preference.
+- Selected work can be filtered by category. Each card expands to show context, without exposing private source code or implying public project links.
+- Contact links to the supplied GitHub profile. Add a verified email or LinkedIn URL to [the contact component](./src/components/contact.tsx) when ready.
