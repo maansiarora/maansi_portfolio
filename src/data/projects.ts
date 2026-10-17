@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    slug: "deployment-zone-expansion",
+    title: "GitLab to Azure Deployment Zone",
+    category: "Platforms & cloud",
+    description: "Expanded shared GitLab Runner capabilities to enable secure, scalable deployments into Azure based tenancies, improving delivery consistency and supporting GitLab adoption across engineering teams.",
+    tech: ["GitLab Runners", "Azure", "AWS", "Kubernetes", "IaC", "Networking and security"],
+    motif: "deployment",
+    label: "From commit to cloud.",
+  },
+  {
+    slug: "developer-marketplace",
+    title: "Developer Marketplace",
+    category: "Full-Stack Development",
+    description: "Transformed Telstra's Quarterback portal into a self-service developer marketplace, improving product discoverability, streamlining onboarding and enabling teams to find and adopt engineering tools more efficiently.",
+    tech: ["UI/UX","React", "TypeScript", "Backstage.io"],
+    motif: "marketplace",
+    label: "Discover. Build. Create.",
+  },
+  {
+    slug: "ci-cd-modernisation",
+    title: "CI/CD Modernisation",
+    category: "DevOps",
+    description: "Led the migration of CI/CD pipelines from Bamboo to GitLab, modernising delivery workflows while mitigating security risks associated with legacy platform infrastructure.",
+    tech: ["GitLab CI", "Flux CD", "Bamboo", "AWS"],
+    motif: "pipeline",
+    label: "A clearer path to delivery.",
+  },
+  {
+    slug: "upgrade-automation",
+    title: "Quarterback Upgrade Automation",
+    category: "DevOps",
+    description: "Automated the Quarterback upgrade process to reduce manual effort, shorten upgrade timelines and make it easier for the team to remain within the supported N-2 version range.",
+    tech: ["Backstage.io", "GitLab CI", "Automation"],
+    motif: "automation",
+    label: "Less repetition. More possibility.",
+  },
+];
