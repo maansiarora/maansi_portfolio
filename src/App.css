@@ -150,6 +150,7 @@ details .project-note { font-size: 11px; font-style: italic; }
   .section { padding-block: 65px; }
   .about-grid, .project-grid, .skills-grid { grid-template-columns: 1fr; gap: 30px; }
   .about-section .about-grid > div { text-align: center; }
+  .skills-section > .container { text-align: center; }
   .about-copy { font-size: 14px; }
   .section-heading { flex-direction: column; align-items: flex-start; gap: 20px; }
   .section-heading > p { font-size: 14px; }
@@ -158,6 +159,7 @@ details .project-note { font-size: 11px; font-style: italic; }
   .project-art { height: 230px; }
   .project-body { padding: 24px; }
   .skills-grid { margin-top: 30px; }
+  .skill-card .tags { justify-content: center; }
   .skill-card h3 { margin-top: 15px; }
   .skill-card p { max-width: none; }
   .contact-panel { padding: 32px 24px; grid-template-columns: 1fr; gap: 28px; }

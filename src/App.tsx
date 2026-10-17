@@ -25,7 +25,6 @@ function App() {
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? "Close" : "Menu"}
-            <span aria-hidden="true">{menuOpen ? "−" : "+"}</span>
           </button>
           <div id="navigation-links" className={`nav-links${menuOpen ? " is-open" : ""}`}>
             <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
@@ -46,7 +45,6 @@ function App() {
       </main>
       <footer className="container footer">
         <a className="wordmark" href="#home">maansi<span>.</span></a>
-        <p>Thoughtful engineering. Meaningful experiences.</p>
         <a href="#home">Back to top </a>
       </footer>
     </>
